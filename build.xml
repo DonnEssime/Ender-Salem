@@ -100,7 +100,25 @@
 	<target name="deftgt" depends="jars, appletview" />
 
 	<target name="run" depends="jars">
-		<java jar="build/salem.jar" fork="true" />
+		<java jar="build/salem.jar" 
+				dir="build" 
+				fork="true" 
+				maxmemory="128m"
+				classpath="java">
+			<arg line="-d -U http://game.salemthegame.com/res/ game.salemthegame.com"/>
+                        <jvmarg line="-XX:-UseGCOverheadLimit" />
+		</java>
+	</target>
+
+        <target name="debug" depends="jars">
+		<java jar="build/salem.jar"
+				dir="build"
+				fork="true"
+				maxmemory="256m"
+				classpath="java">
+			<arg line="-d -U http://game.salemthegame.com/res/ game.salemthegame.com"/>
+                        <jvmarg line="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -XX:-UseGCOverheadLimit" />
+		</java>
 	</target>
 
 	<target name="clean">

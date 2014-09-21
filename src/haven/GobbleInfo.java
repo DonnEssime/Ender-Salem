@@ -60,7 +60,13 @@ public class GobbleInfo extends ItemInfo.Tip {
     private static final Text.Line head = Text.render("When gobbled:");
     public BufferedImage longtip() {
 	StringBuilder buf = new StringBuilder();
-	buf.append(String.format("Points: $b{%s : %s : %s : %s}\n", point(0), point(1), point(2), point(3)));
+	buf.append("Points: ");
+	for(int i = 0; i < 4; i++) {
+	    if(i > 0)
+		buf.append(", ");
+	    buf.append(String.format("$col[%s]{%s-%s}", Tempers.tcolors[i], Utils.fpformat(l[i], 3, 1), Utils.fpformat(h[i], 3, 1)));
+	}
+	buf.append('\n');
 	int min = (ft + 30) / 60;
 	buf.append(String.format("Full and Fed Up for %02d:%02d\n", min / 60, min % 60));
 	BufferedImage gi = RichText.render(buf.toString(), 0).img;

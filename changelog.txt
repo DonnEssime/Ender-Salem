@@ -1,5 +1,8 @@
 $size[20]{$u{CHANGE LOG:}}
  
+$size[14]{$u{Update for 21.09.14 (Latikai):}}
+  * Merged in new patch.
+ 
 $size[14]{$u{Update for 25.03.14:}}
   * added displaying of new Gluttony values to MenuGrid tooltips
   * added coloring to food heal and glutton values
